@@ -1,0 +1,27 @@
+{% extends "finance/base.html" %}
+
+{% block title %}Quote{% endblock %}
+
+{% block main %}
+
+<form action="{% url 'quotePage' %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+        {{ field }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="text-primary">{{ error|escape }}</p>
+            {% endfor %}
+        {% endif %}
+        </div>
+    {% endfor %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="text-primary">{{ error|escape }}</p>
+            {% endfor %}
+        {% endif %}
+    <input class="btn btn-default" type="submit" value="Quote" />
+</form>
+
+{% endblock %}

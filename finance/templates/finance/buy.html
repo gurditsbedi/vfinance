@@ -1,0 +1,28 @@
+{% extends "finance/base.html" %}
+
+{% block title %}Buy{% endblock %}
+
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+        {{ field }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="text-primary">{{ error|escape }}</p>
+            {% endfor %}
+        {% endif %}
+        </div>
+    {% endfor %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="text-primary">{{ error|escape }}</p>
+            {% endfor %}
+        {% endif %}
+        <div class="form-group">
+            <input class="btn btn-default" type="submit" value="Buy" />
+        </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "finance/base.html" %}
+
+{% block title %}Quote{% endblock %}
+
+{% block main %}
+
+    {% if not error %}
+        <p> A share of {{ info.name }} costs ₹{{ info.price }}.</p>
+    {% else %}
+        <p>Invalid Symbol.</p>
+        <ul>
+            <li>Please check the symbol of the stock and try again.</li>
+        </ul>
+    {% endif %}
+
+{% endblock %}
