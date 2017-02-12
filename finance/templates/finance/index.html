@@ -22,6 +22,7 @@
       </tr>
     </tfoot>
 {% for stock in stocksOfUser %}
+    {% if stock.shares > 0 %}
     <tr>
         <td>{{ stock.symbol }}</td>
         <td>{{ stock.name }}</td>
@@ -29,6 +30,7 @@
         <td>₹{{ stock.price }}</td>
         <td>₹{{ stock.total }}</td>
     </tr>
+    {% endif %}
 {% endfor %}
     <tr>
         <td colspan="4">{{ 'CASH' }}</td>
